@@ -1,0 +1,5 @@
+#忽略以下文件
+*.pyc
+*.DS_Store
+*.log
+*.conf
