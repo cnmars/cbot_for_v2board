@@ -19,28 +19,10 @@
 
 > 依赖关系:  
 > Bot运行需要python3.8及以上版本  
-> 使用[python-telegram-bot](https://github.com/python-telegram-bot/python-telegram-bot)库
+> 安装脚本会尝试安装python3.8及以上版本  
+> 如果安装失败请自行安装python3.8及以上版本  
 
-- 安装python3.8及以上版本
-
-  如果系统内已经安装有python3.8及以上版本则跳过此步骤  
-  可使用 `python3 -V` 查看当前系统python版本
-
-  - Ubuntu/Debian
-
-    ```bash
-    sudo apt update && sudo apt install python3
-    ```
-
-  - CentOS可使用此脚本尝试安装
-
-    ```bash
-    bash <(curl -Ls https://raw.githubusercontent.com/caoyyds/cbot_for_v2board/main/centos_install_python.sh)
-    ```
-
-  - 其他系统请自行安装python3.8及以上版本
-
-- 安装Bot
+- 安装脚本
 
   ```bash
   bash <(curl -Ls https://raw.githubusercontent.com/caoyyds/cbot_for_v2board/main/install_cbot.sh)
