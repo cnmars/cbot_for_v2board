@@ -1,0 +1,8 @@
+[Unit]
+Description=cbot_for_v2board
+[Service]
+ExecStart=/usr/bin/python3 ./cbot_for_v2board.py
+WorkingDirectory=/usr/local/cbot_for_v2board
+Restart=always
+[Install]
+WantedBy=default.target
