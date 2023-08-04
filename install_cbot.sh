@@ -90,13 +90,17 @@ install_python() {
             pip3 -V
             echo -e "python${extracted_version} 安装成功"
         else
-            sudo apt update && sudo apt install python3 python3-pip -y
+            apt update && apt install python3 python3-pip -y
         fi
     fi
 }
 
 
 install_cbot(){
+    if [[ x"${release}" == x"debian" || x"${release}" == x"ubuntu" ]]; then
+        apt update && apt install python3-pip -y
+    fi
+
     pip3 install python-telegram-bot --upgrade
 
     cd /usr/local/
