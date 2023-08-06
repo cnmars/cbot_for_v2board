@@ -1,23 +1,23 @@
 [Database]
 # 数据库配置
 host = 127.0.0.1
-user = 
-pwd = 
-db = 
+user = user
+pwd = pwd
+db = dbname
 
 [Telegram]
 # 机器人令牌
-cbot_for_v2board = 
+cbot_for_v2board = token
 # 群组用户名【必须带有@】
-group_username = 
+group_username = @username
 # 群组链接
-group_url = 
+group_url = https://t.me/xxxxxx
 
 [V2board]
 # 机场名称
-name = 
+name = name
 # 机场官网链接
-url = 
+url = https://xxxxxx
 
 
 # 不要修改格式，添加好保存即可，所有项都要填写

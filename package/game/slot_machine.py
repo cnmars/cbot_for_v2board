@@ -2,7 +2,7 @@
 # pylint: disable=C0116,W0613
 # -*- coding: utf-8 -*-
 
-import time, uuid, pytz, os, sys, configparser
+import time, uuid, os, sys, configparser
 from datetime import datetime, timezone
 from package.job import message_auto_del
 from package.database import V2_DB
@@ -55,9 +55,9 @@ AIRPORT_URL = CONF.get('V2board','url')
 GROUP_URL = CONF.get('Telegram','group_url')
 GROUP_USERNAME = CONF.get('Telegram','group_username')
 
-#老虎机整体循环秒数
+#老虎机整体循环秒数 不要改 不要改 不要改
 SLOT_MACHINE_TIME = 600
-#开奖前返时间
+#开奖前返时间 不要改 不要改 不要改
 SLOT_MACHINE_END_TIME = 60
 
 
@@ -236,20 +236,20 @@ async def bet_flow(update: Update, context: ContextTypes.DEFAULT_TYPE):
     transfer = round((transfer_enable-u-d)/1073741824, 2)
     #生成按钮
     keyboard = [
-            [
-                InlineKeyboardButton("1GB",callback_data=f'BET_FLOW:{date},1,'),
-                InlineKeyboardButton("2GB",callback_data=f'BET_FLOW:{date},2,'),
-                InlineKeyboardButton("5GB",callback_data=f'BET_FLOW:{date},5,'),
-            ], 
-            [
-                InlineKeyboardButton("10GB",callback_data=f'BET_FLOW:{date},10,'),
-                InlineKeyboardButton("20GB",callback_data=f'BET_FLOW:{date},20,'),
-                InlineKeyboardButton("50GB",callback_data=f'BET_FLOW:{date},50,'),
-            ], 
-            [
-                InlineKeyboardButton("100GB",callback_data=f'BET_FLOW:{date},100,'),
-            ], 
-        ]
+        [
+            InlineKeyboardButton("1GB",callback_data=f'BET_FLOW:{date},1,'),
+            InlineKeyboardButton("2GB",callback_data=f'BET_FLOW:{date},2,'),
+            InlineKeyboardButton("5GB",callback_data=f'BET_FLOW:{date},5,'),
+        ], 
+        [
+            InlineKeyboardButton("10GB",callback_data=f'BET_FLOW:{date},10,'),
+            InlineKeyboardButton("20GB",callback_data=f'BET_FLOW:{date},20,'),
+            InlineKeyboardButton("50GB",callback_data=f'BET_FLOW:{date},50,'),
+        ], 
+        [
+            InlineKeyboardButton("100GB",callback_data=f'BET_FLOW:{date},100,'),
+        ], 
+    ]
     reply_markup = InlineKeyboardMarkup(keyboard)
     #更改页面消息
     try:
@@ -429,9 +429,3 @@ async def bet_up(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.callback_query.edit_message_text(text=context.bot_data['bet_message'], reply_markup=reply_markup, parse_mode='HTML')
 
 
-async def lottery_record(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    '''开奖记录查询'''
-    bot_return = await update.message.reply_text(text=context.bot_data['bet_result'], parse_mode='HTML')
-    if update.message.chat.type == 'supergroup':
-        context.job_queue.run_once(message_auto_del, 30, data=update.message.chat_id, name=str(update.message.message_id))
-        context.job_queue.run_once(message_auto_del, 30, data=bot_return.chat_id, name=str(bot_return.message_id))

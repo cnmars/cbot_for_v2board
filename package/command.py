@@ -47,28 +47,28 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         
     if len(context.args) == 1:
         keyboard = [
-                [
-                    InlineKeyboardButton("®️®️®️",callback_data=f'BET_CONTENT:{context.args[0]},®️®️®️,'),
-                    InlineKeyboardButton("🍇🍇🍇",callback_data=f'BET_CONTENT:{context.args[0]},🍇🍇🍇,'),
-                    InlineKeyboardButton("🍋🍋🍋",callback_data=f'BET_CONTENT:{context.args[0]},🍋🍋🍋,'),
-                    InlineKeyboardButton("7️⃣7️⃣7️⃣",callback_data=f'BET_CONTENT:{context.args[0]},7️⃣7️⃣7️⃣,'),
-                ], 
-                [
-                    InlineKeyboardButton("®️®️",callback_data=f'BET_CONTENT:{context.args[0]},®️®️,'),
-                    InlineKeyboardButton("🍇🍇",callback_data=f'BET_CONTENT:{context.args[0]},🍇🍇,'),
-                    InlineKeyboardButton("🍋🍋",callback_data=f'BET_CONTENT:{context.args[0]},🍋🍋,'),
-                    InlineKeyboardButton("7️⃣7️⃣",callback_data=f'BET_CONTENT:{context.args[0]},7️⃣7️⃣,'),
-                ], 
-                [
-                    InlineKeyboardButton("®️",callback_data=f'BET_CONTENT:{context.args[0]},®️,'),
-                    InlineKeyboardButton("🍇",callback_data=f'BET_CONTENT:{context.args[0]},🍇,'),
-                    InlineKeyboardButton("🍋",callback_data=f'BET_CONTENT:{context.args[0]},🍋,'),
-                    InlineKeyboardButton("7️⃣",callback_data=f'BET_CONTENT:{context.args[0]},7️⃣,'),
-                ], 
-                [
-                    InlineKeyboardButton("特殊奖:炸弹💣",callback_data=f'BET_CONTENT:{context.args[0]},💣,'),
-                ], 
-            ]
+            [
+                InlineKeyboardButton("®️®️®️",callback_data=f'BET_CONTENT:{context.args[0]},®️®️®️,'),
+                InlineKeyboardButton("🍇🍇🍇",callback_data=f'BET_CONTENT:{context.args[0]},🍇🍇🍇,'),
+                InlineKeyboardButton("🍋🍋🍋",callback_data=f'BET_CONTENT:{context.args[0]},🍋🍋🍋,'),
+                InlineKeyboardButton("7️⃣7️⃣7️⃣",callback_data=f'BET_CONTENT:{context.args[0]},7️⃣7️⃣7️⃣,'),
+            ], 
+            [
+                InlineKeyboardButton("®️®️",callback_data=f'BET_CONTENT:{context.args[0]},®️®️,'),
+                InlineKeyboardButton("🍇🍇",callback_data=f'BET_CONTENT:{context.args[0]},🍇🍇,'),
+                InlineKeyboardButton("🍋🍋",callback_data=f'BET_CONTENT:{context.args[0]},🍋🍋,'),
+                InlineKeyboardButton("7️⃣7️⃣",callback_data=f'BET_CONTENT:{context.args[0]},7️⃣7️⃣,'),
+            ], 
+            [
+                InlineKeyboardButton("®️",callback_data=f'BET_CONTENT:{context.args[0]},®️,'),
+                InlineKeyboardButton("🍇",callback_data=f'BET_CONTENT:{context.args[0]},🍇,'),
+                InlineKeyboardButton("🍋",callback_data=f'BET_CONTENT:{context.args[0]},🍋,'),
+                InlineKeyboardButton("7️⃣",callback_data=f'BET_CONTENT:{context.args[0]},7️⃣,'),
+            ], 
+            [
+                InlineKeyboardButton("特殊奖:炸弹💣",callback_data=f'BET_CONTENT:{context.args[0]},💣,'),
+            ], 
+        ]
         reply_markup = InlineKeyboardMarkup(keyboard)
         await update.message.reply_text(text='请选择您的投注项:',reply_markup=reply_markup)
                 

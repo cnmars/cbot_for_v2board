@@ -5,7 +5,7 @@
 import logging, configparser, os
 from datetime import datetime, timedelta
 from package import check_in, command
-from package.game import slot_machine
+from package.game import slot_machine, lottery_record
 from telegram.ext import (
     Application,
     CommandHandler,
@@ -67,7 +67,7 @@ def main():
     application.add_handler(CommandHandler('logout', command.unbind))
     application.add_handler(CommandHandler('me', command.me))
     application.add_handler(CommandHandler('day', check_in.day))
-    application.add_handler(CommandHandler('lottery_record', slot_machine.lottery_record))
+    application.add_handler(CommandHandler('lottery_record', lottery_record.lottery_record))
     application.add_handler(CommandHandler('change_password', command.change_password))
     
     #下注按钮
@@ -77,11 +77,17 @@ def main():
     application.add_handler(CallbackQueryHandler(slot_machine.bet_ok_no,pattern='^BET_FLOW:'))
     application.add_handler(CallbackQueryHandler(slot_machine.bet_flow,pattern='^BET_CONTENT:'))
 
+    #签到按钮
+    application.add_handler(CallbackQueryHandler(check_in.check_in_keyboard,pattern='^DAY:'))
+
+    #开奖记录按钮
+    application.add_handler(CallbackQueryHandler(lottery_record.lottery_record_page,pattern='^LOTTERY_RECORD:'))
+
     #过滤转发签到表情,防止刷签到
-    application.add_handler(MessageHandler(filters.FORWARDED & filters.Dice.DICE, check_in.forwarded))
-    application.add_handler(MessageHandler(filters.FORWARDED & filters.Dice.DARTS, check_in.forwarded))
-    application.add_handler(MessageHandler(filters.FORWARDED & filters.Dice.BOWLING, check_in.forwarded))
-    application.add_handler(MessageHandler(filters.FORWARDED & filters.Dice.SLOT_MACHINE, check_in.forwarded))
+    application.add_handler(MessageHandler(filters.FORWARDED & filters.Dice.DICE, check_in.forwarded_dice))
+    application.add_handler(MessageHandler(filters.FORWARDED & filters.Dice.DARTS, check_in.forwarded_dice))
+    application.add_handler(MessageHandler(filters.FORWARDED & filters.Dice.BOWLING, check_in.forwarded_dice))
+    application.add_handler(MessageHandler(filters.FORWARDED & filters.Dice.SLOT_MACHINE, check_in.forwarded_dice))
     
     #过滤骰子普通签到
     application.add_handler(MessageHandler(filters.Dice.DICE, check_in.dice6))
